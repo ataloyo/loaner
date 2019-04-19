@@ -1,3 +1,5 @@
+<!DOCTYPE HTML>
+<html lang="en">
 # Grab n Go API
 
 
@@ -7,7 +9,7 @@
 
 This documentation explains how to get started with the GnG API.
 
-## API Authentication
+### API Authentication
 
 The GnG API is authenticated based on user roles and permissions. Roles are
 managed by Google groups that are synced with a Cron job.
@@ -25,7 +27,7 @@ There are two roles built into the app by default:
         experience. This role has all permissions by default and thus
         the ability to perform all of the actions within the application.
 
-Additional roles can be created by using the Roles API. Each Role can be
+Additional roles can be created by using the Roles API. Each role can be
 given zero or more permissions and associated with a group to automatically
 add users to the given role. Some example roles you may want to create are
 a technician role that can audit shelves and other inventory-related tasks or
@@ -102,24 +104,32 @@ The entry point for the Bootstrap methods.
 
 #### Methods
 
-##### get_status
-
-Gets general bootstrap status, and task status if not yet completed:
+`get_status` Gets general bootstrap status, and task status if not yet completed:
 
 Requests                  | Attributes
 :------------------------ | :---------
 message_types.VoidMessage | None
 
-| Returns                             | Attributes                             |
-| :---------------------------------- | :------------------------------------- |
-| GetStatusResponse: Bootstrap status | enabled: bool, indicates if the        |
-| response ProtoRPC                   | bootstrap is enabled.                  |
-|                                     | started: bool, indicated if the        |
-|                                     | bootstrap has been started.            |
-|                                     | completed: bool, indicated if the      |
-|                                     | bootstrap is completed.                |
-|                                     | tasks: BootstrapTask, A list of all of |
-|                                     | the tasks to be displayed.             |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>GetStatusResponse: Bootstrap status response ProtoRPC</td>
+         <td>enabled: bool, indicates if the bootstrap is enabled.</td>
+      <tr>
+         <td></td>
+         <td>started: bool, indicated if the bootstrap has been started.</td>
+      <tr>
+         <td></td>
+         <td>completed: bool, indicated if the bootstrap is completed.</td>
+      <tr>
+         <td></td>
+         <td> tasks: BootstrapTask, A list of all of the tasks to be displayed.</td>
+   </tbody>
+</table>
 
 ##### run
 
