@@ -213,48 +213,81 @@ Lists the given setting's value.
 
 #### Methods
 
-##### get
+`get` Lists the given setting's value:
 
-Lists the given setting's value:
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>GetConfigurationRequest request for ProtoRPC message.</td>
+         <td>setting: str, The name of the setting being requested.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>configuration_type: ConfigurationType, the type of configuration to request for.</td>
+   </tbody>
+</table>
 
-| Requests                            | Attributes                             |
-| :---------------------------------- | :------------------------------------- |
-| GetConfigurationRequest request for | setting: str, The name of the setting  |
-| ProtoRPC message.                   | being requested.                       |
-|                                     | configuration_type: ConfigurationType, |
-|                                     | The type of configuration to request   |
-|                                     | for.                                   |
 
-| Returns                            | Attributes                              |
-| :--------------------------------- | :-------------------------------------- |
-| ConfigurationResponse response for | setting: str, The name of the setting   |
-| ProtoRPC message.                  | being returned.                         |
-|                                    | string_value: str, The string value of  |
-|                                    | the setting.                            |
-|                                    | integer_value: int, The integer value   |
-|                                    | of the setting.                         |
-|                                    | boolean_value: bool, The boolean value  |
-|                                    | of the setting.                         |
-|                                    | list_value: list, The list value of the |
-|                                    | setting.                                |
 
-##### list
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>ConfigurationResponse response for ProtoRPC message. </td>
+         <td>setting: str, The name of the setting being returned.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>string_value: str, The string value of the setting.</td>
+      <tr>
+         <td></td>
+         <td>integer_value: int, The integer value of the setting.</td>
+      <tr>
+         <td></td>
+         <td>boolean_value: bool, The boolean value of the setting.</td>
+      <tr>
+         <td></td>
+         <td>list_value: list, The list value of the setting.</td>
+   </tbody>
+</table>
 
-Get a list of all configuration values.
 
-Requests                  | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+`list` Get a list of all configuration values.
 
-| Returns                             | Attributes                            |
-| :---------------------------------- | :------------------------------------ |
-| ListConfigurationsResponse response | settings: ConfigurationResponse, The  |
-| for ProtoRPC message.               | setting and corresponding value being |
-|                                     | returned.                             |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
 
-##### update
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>ListConfigurationsResponse response for ProtoRPC message.</td>
+         <td>settings: ConfigurationResponse, The setting and corresponding value being returned.</td>
+      </tr>
+   </tbody>
+</table>
 
-Updates a given settings value.
+`update` Updates a given settings value.
 
 | Requests                           | Attributes                              |
 | :--------------------------------- | :-------------------------------------- |
