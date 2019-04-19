@@ -236,8 +236,8 @@ Lists the given setting's value.
 <table>
    <tbody>
       <tr>
-         <td>Returns</th>
-         <td>Attributes</th>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
       </tr>
       <tr>
          <td>ConfigurationResponse response for ProtoRPC message. </td>
@@ -289,25 +289,47 @@ Lists the given setting's value.
 
 `update` Updates a given settings value.
 
-| Requests                           | Attributes                              |
-| :--------------------------------- | :-------------------------------------- |
-| UpdateConfigurationRequest request | setting: str, The name of the setting   |
-| for ProtoRPC message.              | being requested.                        |
-|                                    | configuration_type: ConfigurationType,  |
-|                                    | The type of configuration to request    |
-|                                    | for.                                    |
-|                                    | string_value: str, The string value of  |
-|                                    | the setting being updated.              |
-|                                    | integer_value: int, The integer value   |
-|                                    | of the setting being updated.           |
-|                                    | boolean_value: bool, The boolean value  |
-|                                    | of the setting being updated.           |
-|                                    | list_value: list, The list value of the |
-|                                    | setting being updated.                  |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>UpdateConfigurationRequest request for ProtoRPC message.</td>
+         <td>setting: str, The name of the setting being requested.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>configuration_type: ConfigurationType, The type of configuration to request for.</td>
+      <tr>
+         <td></td>
+         <td>string_value: str, The string value of the setting being updated.</td>
+      <tr>
+         <td></td>
+         <td>integer_value: int, The integer value ff the setting being updated.</td>
+      <tr>
+         <td></td>
+         <td>boolean_value: bool, The boolean value of the setting being updated.</td>
+      <tr>
+         <td></td>
+         <td>list_value: list, The list value of the setting being updated.</td>
+         
+   </tbody>
+</table>
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
 
 ### Datastore_api
 
@@ -315,18 +337,33 @@ The entry point for the Datastore methods.
 
 #### Methods
 
-##### import
+`import` Datastore import request for the Datastore API.
 
-Datastore import request for the Datastore API.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>Datastore YAML Import Request ProtoRPC message.</td>
+         <td>yaml: str, The name of the YAML being imported.</td>
+      </tr>
+   </tbody>
+</table>
 
-| Requests                      | Attributes                            |
-| :---------------------------- | :------------------------------------ |
-| Datastore YAML Import Request | yaml: str, The name of the YAML being |
-| ProtoRPC message.             | imported.                             |
-
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage.</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
 
 ### Device_api
 
@@ -334,88 +371,172 @@ API endpoint that handles requests related to Devices.
 
 #### Methods
 
-##### auditable
-
-If a device is able to be audited for shelf audits. Returns an error if the
+`auditable` If a device is able to be audited for shelf audits. Returns an error if the
 device cannot be moved to the shelf for any reason.
 
-| Requests                          | Attributes                               |
-| :-------------------------------- | :--------------------------------------- |
-| General Device request ProtoRPC   | asset_tag: str, The asset tag of the     |
-| message with several identifiers. | Chrome device.                           |
-| Only one identifier needs to be   | chrome_device_id: str, The Chrome device |
-| provided.                         | id of the Chrome device.                 |
-|                                   | serial_number: str, The serial number of |
-|                                   | the Chrome device.                       |
-|                                   | urlkey: str, The URL-safe key of a       |
-|                                   | device.                                  |
-|                                   | unknown_identifier: str, Either an asset |
-|                                   | tag or serial number of the device.      |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>General Device request ProtoRPC message with several identifiers. Only one identifier needs to be provided.</td>
+         <td>asset_tag: str, The asset tag of the Chrome device.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>chrome_device_id: str, The Chrome device id of the Chrome device.</td>
+      <tr>
+         <td></td>
+         <td>serial_number: str, The serial number of the Chrome device.</td>
+      <tr>
+         <td></td>
+         <td>urlkey: str, The URL-safe key of a device.</td>
+      <tr>
+         <td></td>
+         <td>unknown_identifier: str, Either an asset tag or serial number of the device.</td>
+   </tbody>
+</table>
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
 
-##### enable_guest_mode
+`enable_guest_mode` Enables Guest Mode for a given device.
 
-Enables Guest Mode for a given device.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>RunRequest: Bootstrap request ProtoRPC message</td>
+         <td>requested_tasks: BootstrapTask, A list of the requested tasks.</td>
+      </tr>
+   </tbody>
+</table>
 
-| Requests                          | Attributes                               |
-| :-------------------------------- | :--------------------------------------- |
-| General Device request ProtoRPC   | asset_tag: str, The asset tag of the     |
-| message with several identifiers. | Chrome device.                           |
-| Only one identifier needs to be   | chrome_device_id: str, The Chrome device |
-| provided.                         | id of the Chrome device.                 |
-|                                   | serial_number: str, The serial number of |
-|                                   | the Chrome device.                       |
-|                                   | urlkey: str, The URL-safe key of a       |
-|                                   | device.                                  |
-|                                   | unknown_identifier: str, Either an asset |
-|                                   | tag or serial number of the device.      |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>General Device request ProtoRPC message with several identifiers. Only one identifier needs to be provided.</td>
+         <td>asset_tag: str, The asset tag of the Chrome device.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>chrome_device_id: str, The Chrome device id of the Chrome device.</td>
+      <tr>
+         <td></td>
+         <td>serial_number: str, The serial number of the Chrome device.</td>
+      <tr>
+         <td></td>
+         <td>urlkey: str, The URL-safe key of a device.</td>
+      <tr>
+         <td></td>
+         <td>unknown_identifier: str, Either an asset tag or serial number of the device.</td>
+   </tbody>
+</table>
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
 
-##### enroll
+`enroll` Enrolls a device in the program
 
-Enrolls a device in the program
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>General Device request ProtoRPC message with several identifiers. Only one identifier needs to be provided.</td>
+         <td>asset_tag: str, The asset tag of the Chrome device.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>chrome_device_id: str, The Chrome device id of the Chrome device.</td>
+      <tr>
+         <td></td>
+         <td>serial_number: str, The serial number of the Chrome device.</td>
+      <tr>
+         <td></td>
+         <td>urlkey: str, The URL-safe key of a device.</td>
+      <tr>
+         <td></td>
+         <td>unknown_identifier: str, Either an asset tag or serial number of the device.</td>
+   </tbody>
+</table>
 
-| Requests                          | Attributes                               |
-| :-------------------------------- | :--------------------------------------- |
-| General Device request ProtoRPC   | asset_tag: str, The asset tag of the     |
-| message with several identifiers. | Chrome device.                           |
-| Only one identifier needs to be   | chrome_device_id: str, The Chrome device |
-| provided.                         | id of the Chrome device.                 |
-|                                   | serial_number: str, The serial number of |
-|                                   | the Chrome device.                       |
-|                                   | urlkey: str, The URL-safe key of a       |
-|                                   | device.                                  |
-|                                   | unknown_identifier: str, Either an asset |
-|                                   | tag or serial number of the device.      |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+`extend_loan` Extend the current loan for a given Chrome device.
 
-##### extend_loan
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>Loan extension request ProtoRPC message.</td>
+         <td>device: DeviceRequest, A device to be fetched.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>extend_date: datetime, The date to extend the loan for.</tr>
+   </tbody>
+</table>
 
-Extend the current loan for a given Chrome device.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
 
-| Requests                        | Attributes                                |
-| :------------------------------ | :---------------------------------------- |
-| Loan extension request ProtoRPC | device: DeviceRequest, A device to be     |
-| message.                        | fetched.                                  |
-|                                 | extend_date: datetime, The date to extend |
-|                                 | the loan for.                             |
-
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
-
-##### get
-
-Gets a device using any identifier in device_message.DeviceRequest.
+`get` Gets a device using any identifier in device_message.DeviceRequest.
 
 | Requests                          | Attributes                               |
 | :-------------------------------- | :--------------------------------------- |
