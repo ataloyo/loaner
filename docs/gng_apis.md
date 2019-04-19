@@ -139,6 +139,7 @@ The entry point for the Bootstrap methods.
          <td> tasks: BootstrapTask, A list of all of the tasks to be displayed.</td>
    </tbody>
 </table>
+<br>
 
 `run` Runs request for the Bootstrap API:
 
@@ -167,6 +168,7 @@ The entry point for the Bootstrap methods.
       </tr>
    </tbody>
 </table>
+<br>
 
 ### Chrome_api
 
@@ -205,7 +207,7 @@ The entry point for the GnG Loaners Chrome App.
          <td>start_assignment: bool, Determine if assignment workflow should be started.</td>
    </tbody>
 </table>
-
+<br>
 
 ### Configuration_api
 
@@ -257,7 +259,7 @@ Lists the given setting's value.
          <td>list_value: list, The list value of the setting.</td>
    </tbody>
 </table>
-
+<br>
 
 `list` Get a list of all configuration values.
 
@@ -286,6 +288,7 @@ Lists the given setting's value.
       </tr>
    </tbody>
 </table>
+<br>
 
 `update` Updates a given settings value.
 
@@ -330,6 +333,7 @@ Lists the given setting's value.
       </tr>
    </tbody>
 </table>
+<br>
 
 ### Datastore_api
 
@@ -364,6 +368,7 @@ The entry point for the Datastore methods.
       </tr>
    </tbody>
 </table>
+<br>
 
 ### Device_api
 
@@ -411,6 +416,7 @@ device cannot be moved to the shelf for any reason.
       </tr>
    </tbody>
 </table>
+<br>
 
 `enable_guest_mode` Enables Guest Mode for a given device.
 
@@ -464,6 +470,7 @@ device cannot be moved to the shelf for any reason.
       </tr>
    </tbody>
 </table>
+<br>
 
 `enroll` Enrolls a device in the program
 
@@ -504,6 +511,7 @@ device cannot be moved to the shelf for any reason.
       </tr>
    </tbody>
 </table>
+<br>
 
 `extend_loan` Extend the current loan for a given Chrome device.
 
@@ -535,213 +543,394 @@ device cannot be moved to the shelf for any reason.
       </tr>
    </tbody>
 </table>
+<br>
 
 `get` Gets a device using any identifier in device_message.DeviceRequest.
 
-| Requests                          | Attributes                               |
-| :-------------------------------- | :--------------------------------------- |
-| General Device request ProtoRPC   | asset_tag: str, The asset tag of the     |
-| message with several identifiers. | Chrome device.                           |
-| Only one identifier needs to be   | chrome_device_id: str, The Chrome device |
-| provided.                         | id of the Chrome device.                 |
-|                                   | serial_number: str, The serial number of |
-|                                   | the Chrome device.                       |
-|                                   | urlkey: str, The URL-safe key of a       |
-|                                   | device.                                  |
-|                                   | unknown_identifier: str, Either an asset |
-|                                   | tag or serial number of the device.      |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>General Device request ProtoRPC message with several identifiers. Only one identifier needs to be provided.</td>
+         <td>asset_tag: str, The asset tag of the Chrome device.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>chrome_device_id: str, The Chrome device id of the Chrome device.</td>
+      <tr>
+         <td></td>
+         <td>serial_number: str, The serial number of the Chrome device.</td>
+      <tr>
+         <td></td>
+         <td>urlkey: str, The URL-safe key of a device.</td>
+      <tr>
+         <td></td>
+         <td>unknown_identifier: str, Either an asset tag or serial number of the device.</td>
+   </tbody>
+</table>
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
-##### list
+`list` Lists all devices based on any device attribute.
 
-Lists all devices based on any device attribute.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>Device ProtoRPC message.</td>
+         <td>serial_number: str, The serial number of the Chrome device.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>asset_tag: str, The asset tag of the Chrome device.</td>
+       <tr>
+         <td>enrolled: bool, Indicates the enrollment status of the device.</td>
+          <td></td>
+       <tr>
+         <td></td>
+          <td>device_model: int, Identifies the model name of the device.</td>
+       <tr>
+         <td></td>
+         <td>due_date: datetime, The date that device is due for return.</td>
+       <tr>
+         <td></td>
+         <td>last_know_healthy: datetime, The date to indicate the last known healthy status.</td>
+       <tr>
+         <td></td>
+         <td>shelf: shelf_messages. Shelf, The shelf the device is placed on.</td>
+       <tr>
+          <td></td>
+          <td>assigned_user: str, The email of the user who is assigned to the device.</td>
+       <tr>
+          <td></td>
+          <td>assignment_date: datetime, The date the device was assigned to a user.</td>
+       <tr>
+          <td></td>
+          <td>current_ou: str, The current organizational unit the device belongs to.</td>
+       <tr>
+          <td></td>
+          <td>ou_change_date: datetime, The date the organizational unit was changed.</td>
+       <tr>
+          <td></td>
+          <td>locked: bool, Indicates whether or not the device is locked.</td>
+       <tr>
+          <td></td>
+          <td>lost: bool, Indicates whether or not the device is lost.</td>
+       <tr>
+          <td></td>
+          <td>mark_pending_return_date: datetime, The date a user marked device returned.</td>
+       <tr>
+          <td></td>
+          <td>chrome_device_id: str, A unique device ID.</td>
+       <tr>
+          <td></td>
+          <td>last_heartbeat: datetime, The date of the last time the device checked in.</td>
+       <tr>
+          <td></td>
+          <td>damaged: bool, Indicates the if the device is damaged.</td>
+       <tr>
+          <td></td>
+          <td>damaged_reason: str, A string denoting the reason for being reported as damaged.</td>
+       <tr>
+          <td></td>
+          <td>last_reminder: Reminder, Level, time, and count of the last reminder the device had.</td>
+       <tr>
+          <td></td>
+          <td>next_reminder: Reminder, Level, time, and count of the next reminder.</td>
+       <tr>
+          <td></td>
+          <td>page_size: int, The number of results to query for and display.</td>
+       <tr>
+          <td></td>
+          <td>page_token: str, A page token to query next page results.</td>
+       <tr>
+          <td></td>
+          <td>max_extend_date: datetime, Indicates maximum extend date a device can have.</td>
+       <tr>
+          <td></td>
+          <td>guest_enabled: bool, Indicates if guest mode has been already enabled.</td>
+       <tr>
+          <td></td>
+          <td>guest_permitted: bool, Indicates if guest mode has been allowed.</td>
+       <tr>
+          <td></td>
+          <td>give_name: str, The given name of the user.</td>
+       <tr>
+          <td></td>
+          <td>query: shared_message.SearchRequest, a message containing query options to conduct a search on an index.</td>
+   </tbody>
+</table>
 
-| Requests                 | Attributes                                        |
-| :----------------------- | :------------------------------------------------ |
-| Device ProtoRPC message. | serial_number: str, The serial number of the      |
-|                          | Chrome device.                                    |
-|                          | asset_tag: str, The asset tag of the Chrome       |
-|                          | device.                                           |
-|                          | enrolled: bool, Indicates the enrollment status   |
-|                          | of the device.                                    |
-|                          | device_model: int, Identifies the model name of   |
-|                          | the device.                                       |
-|                          | due_date: datetime, The date that device is due   |
-|                          | for return.                                       |
-|                          | last_know_healthy: datetime, The date to indicate |
-|                          | the last known healthy status.                    |
-|                          | shelf: shelf_messages.Shelf, The shelf the device |
-|                          | is placed on.                                     |
-|                          | assigned_user: str, The email of the user who is  |
-|                          | assigned to the device.                           |
-|                          | assignment_date: datetime, The date the device    |
-|                          | was assigned to a user.                           |
-|                          | current_ou: str, The current organizational unit  |
-|                          | the device belongs to.                            |
-|                          | ou_change_date: datetime, The date the            |
-|                          | organizational unit was changed.                  |
-|                          | locked: bool, Indicates whether or not the device |
-|                          | is locked.                                        |
-|                          | lost: bool, Indicates whether or not the device   |
-|                          | is lost.                                          |
-|                          | mark_pending_return_date: datetime, The date a    |
-|                          | user marked device returned.                      |
-|                          | chrome_device_id: str, A unique device ID.        |
-|                          | last_heartbeat: datetime, The date of the last    |
-|                          | time the device checked in.                       |
-|                          | damaged: bool, Indicates the if the device is     |
-|                          | damaged.                                          |
-|                          | damaged_reason: str, A string denoting the reason |
-|                          | for being reported as damaged.                    |
-|                          | last_reminder: Reminder, Level, time, and count   |
-|                          | of the last reminder the device had.              |
-|                          | next_reminder: Reminder, Level, time, and count   |
-|                          | of the next reminder.                             |
-|                          | page_size: int, The number of results to query    |
-|                          | for and display.                                  |
-|                          | page_token: str, A page token to query next page  |
-|                          | results.                                          |
-|                          | max_extend_date: datetime, Indicates maximum      |
-|                          | extend date a device can have.                    |
-|                          | guest_enabled: bool, Indicates if guest mode has  |
-|                          | been already enabled.                             |
-|                          | guest_permitted: bool, Indicates if guest mode has|
-|                          | been allowed.                                     |
-|                          | give_name: str, The given name of the user.       |
-|                          | query: shared_message.SearchRequest, a message    |
-|                          | containing query options to conduct a search on an|
-|                          | index.                                            |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>List device response ProtoRPC message.</td>
+         <td>devices: Device, A device to display.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>has_additional_results: bool, If there are more results to be displayed.</td>
+      <tr>
+         <td></td>
+         <td>page_token: str, A page token that will allow be used to query for additional results.</td>
+   </tbody>
+</table>
+<br>
 
-| Returns                       | Attributes                                  |
-| :---------------------------- | :------------------------------------------ |
-| List device response ProtoRPC | devices: Device, A device to display.       |
-| message.                      |                                             |
-|                               | has_additional_results: bool, If there are  |
-|                               | more results to be displayed.               |
-|                               | page_token: str, A page token that will     |
-|                               | allow be used to query for additional       |
-|                               | results.                                    |
+`mark_damaged` Mark that a device is damaged.
 
-##### mark_damaged
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>Damaged device ProtoRPC message.</td>
+         <td>device: DeviceRequest, A device to be fetched.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>damaged_reason: str, The reason the device is being reported as damaged.</td>
+   </tbody>
+</table>
 
-Mark that a device is damaged.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
-| Requests                         | Attributes                            |
-| :------------------------------- | :------------------------------------ |
-| Damaged device ProtoRPC message. | device: DeviceRequest, A device to be |
-|                                  | fetched.                              |
-|                                  | damaged_reason: str, The reason the   |
-|                                  | device is being reported as damaged.  |
+`mark_lost` Mark that a device is lost.
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>General Device request ProtoRPC message with several identifiers. Only one identifier needs to be provided.</td>
+         <td>asset_tag: str, The asset tag of the Chrome device.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>chrome_device_id: str, The Chrome device id of the Chrome device.</td>
+      <tr>
+         <td></td>
+         <td>serial_number: str, The serial number of the Chrome device.</td>
+      <tr>
+         <td></td>
+         <td>urlkey: str, The URL-safe key of a device.</td>
+      <tr>
+         <td></td>
+         <td>unknown_identifier: str, Either an asset tag or serial number of the device.</td>
+   </tbody>
+</table>
 
-##### mark_lost
 
-Mark that a device is lost.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
-| Requests                          | Attributes                               |
-| :-------------------------------- | :--------------------------------------- |
-| General Device request ProtoRPC   | asset_tag: str, The asset tag of the     |
-| message with several identifiers. | Chrome device.                           |
-|                                   | chrome_device_id: str, The Chrome device |
-|                                   | id of the Chrome device.                 |
-|                                   | serial_number: str, The serial number of |
-|                                   | the Chrome device.                       |
-|                                   | urlkey: str, The URL-safe key of a       |
-|                                   | device.                                  |
-|                                   | unknown_identifier: str, Either an asset |
-|                                   | tag or serial number of the device.      |
+`mark_pending_return` Mark that a device is pending return.
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>General Device request ProtoRPC message with several identifiers. Only one identifier needs to be provided.</td>
+         <td>asset_tag: str, The asset tag of the Chrome device.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>chrome_device_id: str, The Chrome device id of the Chrome device.</td>
+      <tr>
+         <td></td>
+         <td>serial_number: str, The serial number of the Chrome device.</td>
+      <tr>
+         <td></td>
+         <td>urlkey: str, The URL-safe key of a device.</td>
+      <tr>
+         <td></td>
+         <td>unknown_identifier: str, Either an asset tag or serial number of the device.</td>
+   </tbody>
+</table>
 
-##### mark_pending_return
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
-Mark that a device is pending return.
-
-| Requests                          | Attributes                               |
-| :-------------------------------- | :--------------------------------------- |
-| General Device request ProtoRPC   | asset_tag: str, The asset tag of the     |
-| message with several identifiers. | Chrome device.                           |
-| Only one identifier needs to be   | chrome_device_id: str, The Chrome device |
-| provided.                         | id of the Chrome device.                 |
-|                                   | serial_number: str, The serial number of |
-|                                   | the Chrome device.                       |
-|                                   | urlkey: str, The URL-safe key of a       |
-|                                   | device.                                  |
-|                                   | unknown_identifier: str, Either an asset |
-|                                   | tag or serial number of the device.      |
-
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
-
-##### resume_loan
-
-Manually resume a loan that was paused because the device was marked
+`resume_loan` Manually resume a loan that was paused because the device was marked
 pending_return.
 
-| Requests                          | Attributes                               |
-| :-------------------------------- | :--------------------------------------- |
-| General Device request ProtoRPC   | asset_tag: str, The asset tag of the     |
-| message with several identifiers. | Chrome device.                           |
-| Only one identifier needs to be   | chrome_device_id: str, The Chrome device |
-| provided.                         | id of the Chrome device.                 |
-|                                   | serial_number: str, The serial number of |
-|                                   | the Chrome device.                       |
-|                                   | urlkey: str, The URL-safe key of a       |
-|                                   | device.                                  |
-|                                   | unknown_identifier: str, Either an asset |
-|                                   | tag or serial number of the device.      |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>General Device request ProtoRPC message with several identifiers. Only one identifier needs to be provided.</td>
+         <td>asset_tag: str, The asset tag of the Chrome device.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>chrome_device_id: str, The Chrome device id of the Chrome device.</td>
+      <tr>
+         <td></td>
+         <td>serial_number: str, The serial number of the Chrome device.</td>
+      <tr>
+         <td></td>
+         <td>urlkey: str, The URL-safe key of a device.</td>
+      <tr>
+         <td></td>
+         <td>unknown_identifier: str, Either an asset tag or serial number of the device.</td>
+   </tbody>
+</table>
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
-##### unenroll
+`unenroll` Unenrolls a device from the program.
 
-Unenrolls a device from the program.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>General Device request ProtoRPC message with several identifiers. Only one identifier needs to be provided.</td>
+         <td>asset_tag: str, The asset tag of the Chrome device.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>chrome_device_id: str, The Chrome device id of the Chrome device.</td>
+      <tr>
+         <td></td>
+         <td>serial_number: str, The serial number of the Chrome device.</td>
+      <tr>
+         <td></td>
+         <td>urlkey: str, The URL-safe key of a device.</td>
+      <tr>
+         <td></td>
+         <td>unknown_identifier: str, Either an asset tag or serial number of the device.</td>
+   </tbody>
+</table>
 
-| Requests                          | Attributes                               |
-| :-------------------------------- | :--------------------------------------- |
-| General Device request ProtoRPC   | asset_tag: str, The asset tag of the     |
-| message with several identifiers. | Chrome device.                           |
-| Only one identifier needs to be   | chrome_device_id: str, The Chrome device |
-| provided.                         | id of the Chrome device.                 |
-|                                   | serial_number: str, The serial number of |
-|                                   | the Chrome device.                       |
-|                                   | urlkey: str, The URL-safe key of a       |
-|                                   | device.                                  |
-|                                   | unknown_identifier: str, Either an asset |
-|                                   | tag or serial number of the device.      |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+`user_devices` Lists the devices assigned to the currently logged in user.
 
-##### user_devices
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
 
-Lists the devices assigned to the currently logged in user.
-
-Requests                  | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
-
-| Returns                       | Attributes                                  |
-| :---------------------------- | :------------------------------------------ |
-| List device response ProtoRPC | devices: Device, A device to display.       |
-| message.                      |                                             |
-|                               | has_additional_results: bool, If there are  |
-|                               | more results to be displayed.               |
-|                               | page_token: str, A page token that will     |
-|                               | allow be used to query for additional       |
-|                               | results.                                    |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>List device response ProtoRPC message.</td>
+         <td>devices: Device, A device to display.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>has_additional_results: bool, If there are more results to be displayed.</td>
+      <tr>
+         <td></td>
+         <td>page_token: str, A page token that will allow be used to query for additional results.</td>
+   </tbody>
+</table>
+<br>
 
 ### Roles_api
 
@@ -749,41 +938,78 @@ API endpoint that handles requests related to user roles.
 
 #### Methods
 
-##### create
+`create` Create a new role.
 
-Create a new role.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>user_messages.Role</td>
+         <td>name: str, the name of the role.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>permissions: list of str, zero or more permissions to add to the role.</td>
+      <tr>
+         <td></td>
+         <td>associated_group: str, optional group to associate to the role for automatic sync.</td>
+   </tbody>
+</table>
 
-| Requests                      | Attributes
-| :---------------------------- | :---------
-| user_messages.Role            | name: str, the name of the role.
-|                               | permissions: list of str, zero or more
-|                               | permissions to add to the role.
-|                               | associated_group: str, optional group to
-|                               | associate to the role for automatic sync.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
-| Returns                        | Attributes                                  |
-| :----------------------------- | :------------------------------------------ |
-| message_types.VoidMessage      | None                                        |
+`get` Get a specific role by name.
 
-##### get
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>user_messages.GetRoleRequest</td>
+         <td>name: str, the name of the role.</td>
+      </tr>
+   </tbody>
+</table>
 
-Get a specific role by name.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>user_messages.Role</td>
+         <td>name: str, the name of the role.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>permissions: list of str, zero or more permissions associated with the role.</td>
+      <tr>
+         <td></td>
+         <td>associated_group: str, optional group associated to the role for automatic sync.</td>
+         
+   </tbody>
+</table>
+<br>
 
-| Requests                      | Attributes
-| :---------------------------- | :---------
-| user_messages.GetRoleRequest  | name: str, the name of the role.
-
-| Returns                       | Attributes
-| :---------------------------- | :---------
-| user_messages.Role            | name: str, the name of the role.
-|                               | permissions: list of str, zero or more
-|                               | permissions associated with the role.
-|                               | associated_group: str, optional group
-|                               | associated to the role for automatic sync.
-
-##### update
-
-Updates a role's permissions or associated group. Role names cannot be changed
+`update` Updates a role's permissions or associated group. Role names cannot be changed
 once set.
 
 | Requests                      | Attributes
