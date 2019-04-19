@@ -236,8 +236,8 @@ Lists the given setting's value.
 <table>
    <tbody>
       <tr>
-         <th align="center">Returns</th>
-         <th align="center">Attributes</th>
+         <td>Returns</th>
+         <td>Attributes</th>
       </tr>
       <tr>
          <td>ConfigurationResponse response for ProtoRPC message. </td>
