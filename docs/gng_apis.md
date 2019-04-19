@@ -131,14 +131,21 @@ message_types.VoidMessage | None
    </tbody>
 </table>
 
-##### run
+`run` Runs request for the Bootstrap API:
 
-Runs request for the Bootstrap API:
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>RunRequest: Bootstrap request ProtoRPC message</td>
+         <td>requested_tasks: BootstrapTask, A list of the requested tasks.</td>
+      </tr>
+   </tbody>
+</table>
 
-| Requests                      | Attributes                                |
-| :---------------------------- | :---------------------------------------- |
-| RunRequest: Bootstrap request | requested_tasks: BootstrapTask, A list of |
-| ProtoRPC message              | the requested tasks.                      |
 
 Returns                   | Attributes
 :------------------------ | :---------
