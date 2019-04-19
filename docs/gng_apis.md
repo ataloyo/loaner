@@ -106,9 +106,18 @@ The entry point for the Bootstrap methods.
 
 `get_status` Gets general bootstrap status, and task status if not yet completed:
 
-Requests                  | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
 
 <table>
    <tbody>
@@ -146,10 +155,18 @@ message_types.VoidMessage | None
    </tbody>
 </table>
 
-
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
 
 ### Chrome_api
 
@@ -157,21 +174,38 @@ The entry point for the GnG Loaners Chrome App.
 
 #### Methods
 
-##### heartbeat
+`heartbeat`Heartbeat check-in for Chrome devices:
 
-Heartbeat check-in for Chrome devices:
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>HeartbeatRequest: Heartbeat Request ProtoRPC message.</td>
+         <td>device_id: str, The unique Chrome device ID of the Chrome device.</td>
+      </tr>
+   </tbody>
+</table>
 
-| Requests                            | Attributes                        |
-| :---------------------------------- | :-------------------------------- |
-| HeartbeatRequest: Heartbeat Request | device_id: str, The unique Chrome |
-| ProtoRPC message.                   | device ID of the Chrome device.   |
 
-| Returns                      | Attributes                                    |
-| :--------------------------- | :-------------------------------------------- |
-| HeartbeatResponse: Heartbeat | is_enrolled: bool, Determine if the device is |
-| Response ProtoRPC message.   | enrolled.                                     |
-|                              | start_assignment: bool, Determine if          |
-|                              | assignment workflow should be started.        |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>HeartbeatResponse: Heartbeat Response ProtoRPC message.</td>
+         <td>is_enrolled: bool, Determine if the device is enrolled.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>start_assignment: bool, Determine if assignment workflow should be started.</td>
+   </tbody>
+</table>
+
 
 ### Configuration_api
 
