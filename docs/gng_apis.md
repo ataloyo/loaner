@@ -1012,17 +1012,38 @@ API endpoint that handles requests related to user roles.
 `update` Updates a role's permissions or associated group. Role names cannot be changed
 once set.
 
-| Requests                      | Attributes
-| :---------------------------- | :---------
-| user_messages.Role            | name: str, the name of the role.
-|                               | permissions: list of str, zero or more
-|                               | permissions to add to the role.
-|                               | associated_group: str, optional group to
-|                               | associate to the role for automatic sync.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>user_messages.Role</td>
+         <td>name: str, the name of the role.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>permissions: list of str, zero or more permissions to add to the role.</td>
+      <tr>
+         <td></td>
+         <td>associated_group: str, optional group to associate to the role for automatic sync.</td>
+   </tbody>
+</table>
 
-| Returns                        | Attributes                                  |
-| :----------------------------- | :------------------------------------------ |
-| message_types.VoidMessage      | None                                        |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
 ### Search_api
 
@@ -1030,31 +1051,63 @@ API endpoint that handles requests related to search.
 
 #### Methods
 
-##### clear
+`clear` Clear the index for a given model (Device or Shelf).
 
-Clear the index for a given model (Device or Shelf).
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>search_messages.SearchMessage</td>
+         <td>model: enum, the model to clear the index of (Device or Shelf).</td>
+      </tr>
+   </tbody>
+</table>
 
-| Requests                      | Attributes
-| :---------------------------- | :---------
-| search_messages.SearchMessage | model: enum, the model to clear the index of
-|                               | (Device or Shelf).
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
-| Returns                        | Attributes                                  |
-| :----------------------------- | :------------------------------------------ |
-| message_types.VoidMessage      | None                                        |
+`reindex` Reindex the entities for a given model (Device or Shelf).
 
-##### reindex
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>search_messages.SearchMessage</td>
+         <td>model: enum, the model to clear the index of (Device or Shelf).</td>
+      </tr>
+   </tbody>
+</table>
 
-Reindex the entities for a given model (Device or Shelf).
-
-| Requests                      | Attributes
-| :---------------------------- | :---------
-| search_messages.SearchMessage | model: enum, the model to reindex (Device or
-|                               | Shelf).
-
-| Returns                        | Attributes                                  |
-| :----------------------------- | :------------------------------------------ |
-| message_types.VoidMessage      | None                                        |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
 ### Shelf_api
 
@@ -1062,144 +1115,255 @@ The entry point for the Shelf methods.
 
 #### Methods
 
-##### audit
+`audit` Performs an audit on a shelf based on location.
 
-Performs an audit on a shelf based on location.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>ShelfAuditRequest ProtoRPC message.</td>
+         <td>shelf_request: ShelfRequest, A message containing the unique identifiers to be used when retrieving a shelf.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>device_identifiers: list, A list of device serial numbers to perform a device audit on.</td>
+   </tbody>
+</table>
 
-| Requests                            | Attributes                             |
-| :---------------------------------- | :------------------------------------- |
-| ShelfAuditRequest ProtoRPC message. | shelf_request: ShelfRequest, A message |
-|                                     | containing the unique identifiers to   |
-|                                     | be used when retrieving a shelf.       |
-|                                     | device_identifiers: list, A list of    |
-|                                     | device serial numbers to perform a     |
-|                                     | device audit on.                       |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+`disable` Disable a shelf by its location.
 
-##### disable
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>ShelfRequest</td>
+         <td>location: str, The location of the shelf.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>urlsafe_key: str, The urlsafe representation of a ndb.Key.</td>
+   </tbody>
+</table>
 
-Disable a shelf by its location.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
-| Requests                     | Attributes                                    |
-| :--------------------------- | :----------------------------------------     |
-| ShelfRequest                 | location: str, The location of the shelf.     |
-|                              | urlsafe_key: str, The urlsafe representation  |
-|                              | of a ndb.Key.                                 |
+`enroll` Enroll request for the Shelf API.
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>EnrollShelfRequest ProtoRPC message.</td>
+         <td>friendly_name: str, The friendly name of the shelf.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>location: str, The location of the shelf.</td>
+      <tr>
+         <td></td>
+         <td>latitude: float, A geographical point represented by floating-point.</td>
+      <tr>
+         <td></td>
+         <td>latitude: float, A geographical point represented by floating-point.</td>
+      <tr>
+         <td></td>
+         <td>longitude: float, A geographical point represented by floating-point.</td>
+      <tr>
+         <td></td>
+         <td>altitude: float, Indicates the floor.</td>
+      <tr>
+         <td></td>
+         <td>capacity: int, The amount of devices a shelf can hold.</td>
+      <tr>
+         <td></td>
+         <td>audit_notification_enabled: bool, Indicates if an audit is enabled for the shelf.</td>
+      <tr>
+         <td></td>
+         <td>responsible_for_audit: str, The party responsible for audits.</td>    
+   </tbody>
+</table>
 
-##### enroll
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
-Enroll request for the Shelf API.
+`get` Get a shelf based on location.
 
-| Requests                             | Attributes                            |
-| :----------------------------------- | :------------------------------------ |
-| EnrollShelfRequest ProtoRPC message. | friendly_name: str, The friendly name |
-|                                      | of the shelf.                         |
-|                                      | location: str, The location of the    |
-|                                      | shelf.                                |
-|                                      | latitude: float, A geographical point |
-|                                      | represented by floating-point.        |
-|                                      | longitude: float, A geographical      |
-|                                      | point represented by floating-point.  |
-|                                      | altitude: float, Indicates the floor. |
-|                                      | capacity: int, The amount of devices  |
-|                                      | a shelf can hold.                     |
-|                                      | audit_notification_enabled: bool,     |
-|                                      | Indicates if an audit is enabled for  |
-|                                      | the shelf.                            |
-|                                      | responsible_for_audit: str, The party |
-|                                      | responsible for audits.               |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>ShelfRequest</td>
+         <td>location: str, The location of the shelf.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>urlsafe_key: str, The urlsafe representation of a ndb.Key.</td>
+   </tbody>
+</table>
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>Shelf ProtoRPC message</td>
+         <td>enabled: bool, Indicates if the shelf is enabled or not.</td>
+      </tr>
+         <td></td>
+         <td>friendly_name: str, The friendly name of the shelf.</td>
+      <tr>
+         <td></td>
+         <td>location: str, The location of the shelf.</td>
+      <tr>
+         <td></td>
+         <td>latitude: float, A geographical point represented by floating-point.</td>
+      <tr>
+         <td></td>
+         <td>longitude: float, A geographical point represented by floating-point.</td>
+      <tr>
+         <td></td>
+         <td>altitude: float, Indicates the floor.</td>
+      <tr>
+         <td></td>
+         <td>capacity: int, The amount of devices a shelf can hold.</td>
+      <tr>
+         <td></td>
+         <td>audit_notification_enabled: bool, Indicates if an audit is enabled for the shelf.</td>
+      <tr>
+         <td></td>
+         <td>audit_requested: bool, Indicates if an audit has been requested.</td>
+      <tr>
+         <td></td>
+         <td>responsible_for_audit: str, The party responsible for audits.</td>
+      <tr>
+         <td></td>
+         <td>last_audit_time: datetime, Indicates the last audit time.</td>
+      <tr>
+         <td></td>
+         <td>last_audit_by: str, Indicates the last user to audit the shelf.</td>
+      <tr>
+         <td></td>
+         <td>page_token: str, A page token to query next page results.</td>
+      <tr>
+         <td></td>
+         <td>page_size: int, The number of results to query for and display.</td>
+      <tr>
+         <td></td>
+         <td>shelf_request: ShelfRequest, A message containing the unique identifiers to be used when retrieving a shelf.</td>
+   </tbody>
+</table>
+<br>
 
-##### get
 
-Get a shelf based on location.
+`list` List enabled or all shelves based on any shelf attribute.
 
-| Requests                     | Attributes                                    |
-| :--------------------------- | :----------------------------------------     |
-| ShelfRequest                 | location: str, The location of the shelf.     |
-|                              | urlsafe_key: str, The urlsafe representation  |
-|                              | of a ndb.Key.                                 |
-
-| Returns                 | Attributes                                         |
-| :---------------------- | :------------------------------------------------- |
-| Shelf ProtoRPC message. | enabled: bool, Indicates if the shelf is enabled   |
-|                         | or not.                                            |
-|                         | friendly_name: str, The friendly name of the       |
-|                         | shelf.                                             |
-|                         | location: str, The location of the shelf.          |
-|                         | latitude: float, A geographical point represented  |
-|                         | by floating-point.                                 |
-|                         | longitude: float, A geographical point represented |
-|                         | by floating-point.                                 |
-|                         | altitude: float, Indicates the floor.              |
-|                         | capacity: int, The amount of devices a shelf can   |
-|                         | hold.                                              |
-|                         | audit_notification_enabled: bool, Indicates if an  |
-|                         | audit is enabled for the shelf.                    |
-|                         | audit_requested: bool, Indicates if an audit has   |
-|                         | been requested.                                    |
-|                         | responsible_for_audit: str, The party responsible  |
-|                         | for audits.                                        |
-|                         | last_audit_time: datetime, Indicates the last      |
-|                         | audit time.                                        |
-|                         | last_audit_by: str, Indicates the last user to     |
-|                         | audit the shelf.                                   |
-|                         | page_token: str, A page token to query next page   |
-|                         | results.                                           |
-|                         | page_size: int, The number of results to query for |
-|                         | and display.                                       |
-|                         | shelf_request: ShelfRequest, A message containing  |
-|                         | the unique identifiers to be used when retrieving a|
-|                         | shelf.                                             |
-
-##### list
-
-List enabled or all shelves based on any shelf attribute.
-
-| Requests                | Attributes                                         |
-| :---------------------- | :------------------------------------------------- |
-| Shelf ProtoRPC message. | enabled: bool, Indicates if the shelf is enabled   |
-|                         | or not.                                            |
-|                         | friendly_name: str, The friendly name of the       |
-|                         | shelf.                                             |
-|                         | location: str, The location of the shelf.          |
-|                         | latitude: float, A geographical point represented  |
-|                         | by floating-point.                                 |
-|                         | longitude: float, A geographical point represented |
-|                         | by floating-point.                                 |
-|                         | altitude: float, Indicates the floor.              |
-|                         | capacity: int, The amount of devices a shelf can   |
-|                         | hold.                                              |
-|                         | audit_notification_enabled: bool, Indicates if an  |
-|                         | audit is enabled for the shelf.                    |
-|                         | audit_requested: bool, Indicates if an audit has   |
-|                         | been requested.                                    |
-|                         | responsible_for_audit: str, The party responsible  |
-|                         | for audits.                                        |
-|                         | last_audit_time: datetime, Indicates the last      |
-|                         | audit time.                                        |
-|                         | last_audit_by: str, Indicates the last user to     |
-|                         | audit the shelf.                                   |
-|                         | page_size: int, The number of results to query for |
-|                         | and display.                                       |
-|                         | page_token: str, A page token to query next page   |
-|                         | results.                                           |
-|                         | shelf_request: ShelfRequest, A message containing  |
-|                         | the unique identifier to be used to retrieve the   |
-|                         | shelf.                                             |
-|                         | query: shared_message.SearchRequest, a message     |
-|                         | containing query options to conduct a search on an |
-|                         | index.                                             |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>Shelf ProtoRPC message</td>
+         <td>enabled: bool, Indicates if the shelf is enabled or not.</td>
+      </tr>
+         <td></td>
+         <td>friendly_name: str, The friendly name of the shelf.</td>
+      <tr>
+         <td></td>
+         <td>location: str, The location of the shelf.</td>
+      <tr>
+         <td></td>
+         <td>latitude: float, A geographical point represented by floating-point.</td>
+      <tr>
+         <td></td>
+         <td>longitude: float, A geographical point represented by floating-point.</td>
+      <tr>
+         <td></td>
+         <td>altitude: float, Indicates the floor.</td>
+      <tr>
+         <td></td>
+         <td>capacity: int, The amount of devices a shelf can hold.</td>
+      <tr>
+         <td></td>
+         <td>audit_notification_enabled: bool, Indicates if an audit is enabled for the shelf.</td>
+      <tr>
+         <td></td>
+         <td>audit_requested: bool, Indicates if an audit has been requested.</td>
+      <tr>
+         <td></td>
+         <td>responsible_for_audit: str, The party responsible for audits.</td>
+      <tr>
+         <td></td>
+         <td>last_audit_time: datetime, Indicates the last audit time.</td>
+      <tr>
+         <td></td>
+         <td>last_audit_by: str, Indicates the last user to audit the shelf.</td>
+      <tr>
+         <td></td>
+         <td>page_token: str, A page token to query next page results.</td>
+      <tr>
+         <td></td>
+         <td>page_size: int, The number of results to query for and display.</td>
+      <tr>
+         <td></td>
+         <td>shelf_request: ShelfRequest, A message containing the unique identifiers to be used when retrieving a shelf.</td>
+      <tr>
+         <td></td>
+         <td>query: shared_message.SearchRequest, a message containing query options to conduct a search on an index.</td>
+   </tbody>
+</table>
 
 | Returns                      | Attributes                                    |
 | :--------------------------- | :-------------------------------------------- |
