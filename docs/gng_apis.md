@@ -1785,29 +1785,47 @@ API endpoint that handles requests related to tags.
 
 `list` Lists tags.
 
-| Requests                       | Attributes
-| :----------------------------- | :---------
-| tag_messages.ListTagRequest    | page_size: int, the number of results to
-|                                | return.
-|                                | cursor: str, the base64-encoded cursor string
-|                                | specifying where to start the query.
-|                                | page_index: int, the page index to offset the
-|                                | results from.
-|                                | include_hidden_tags: bool, whether to include
-|                                | hidden tags in the results, defaults to
-|                                | False.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>tag_messages.ListTagRequest</td>
+         <td>page_size: int, the number of results to return.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>cursor: str, the base64-encoded cursor string specifying where to start the query.</td>
+      <tr>
+         <td></td>
+         <td>page_index: int, the page index to offset the results from.</td>
+      <tr>
+         <td></td>
+         <td>include_hidden_tags: bool, whether to include hidden tags in the results, defaults to False.</td>
+   </tbody>
+</table>
 
-
-Returns                       | Attributes
-:---------------------------- | :---------
-tag_messages.ListTagResponse  | tags: tag_messages.Tag (repeated), the list of tags
-                              | being returned.
-                              | cursor: str, the base64-encoded denoting the
-                              | position of the last result retrieved.
-                              | has_additional_results : bool, whether there are
-                              | additional results to be retrieved.
-
-
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>tag_messages.ListTagResponse</td>
+         <td>tags: tag_messages.Tag (repeated), the list of tags being returned.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>cursor: str, the base64-encoded denoting the position of the last result retrieved. additional results to be retrieved.</td>
+      <tr>
+         <td></td>
+         <td>
+   </tbody>
+</table>
+<br>
 
 ### User_api
 
@@ -1815,19 +1833,40 @@ API endpoint that handles requests related to users.
 
 #### Methods
 
-##### get
+`get` Get a user object using the logged in user's credential.
 
-Get a user object using the logged in user's credential.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
 
-| Requests                  | Attributes
-| :------------------------ | :---------
-| message_types.VoidMessage | None
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>UserResponse response for ProtoRPC message.</td>
+         <td>email: str, The user email to be displayed.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>roles: list of str, The roles of the user to be displayed.</td>
+      <tr>
+         <td></td>
+         <td>permissions: list of str, The permissions the user has.</td>
+      <tr>
+         <td></td>
+         <td>superadmin: bool, if the user is superadmin.</td>
+   </tbody>
+</table>
 
-| Returns                        | Attributes                                  |
-| :----------------------------- | :------------------------------------------ |
-| UserResponse response for      | email: str, The user email to be displayed. |
-| ProtoRPC message.              | roles: list of str, The roles of the user to|
-|                                | be displayed.                               |
-|                                | permissions: list of str, The permissions   |
-|                                | the user has.                               |
-|                                | superadmin: bool, if the user is superadmin.|
