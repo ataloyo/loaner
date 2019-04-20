@@ -1,9 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
+   
 # Grab n Go API
-
-
-
 
 ## Getting Started with the GnG API
 
@@ -1365,37 +1363,71 @@ The entry point for the Shelf methods.
    </tbody>
 </table>
 
-| Returns                      | Attributes                                    |
-| :--------------------------- | :-------------------------------------------- |
-| List Shelf Response ProtoRPC | shelves: Shelf, The list of shelves being     |
-| message.                     | returned.                                     |
-|                              | has_additional_results: bool, If there are    |
-|                              | more results to be displayed.                 |
-|                              | page_token: str, A page token that will allow |
-|                              | be used to query for additional results.      |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>List Shelf Response ProtoRPC message.</td>
+         <td>shelves: Shelf, The list of shelves being returned.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>has_additional_results: bool, If there are more results to be displayed.</td>
+      <tr>
+         <td></td>
+         <td>page_token: str, A page token that will allow be used to query for additional results.</td>
+   </tbody>
+</table>
+<br>
 
-##### update
+`update` Get a shelf using location to update its properties.
 
-Get a shelf using location to update its properties.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>UpdateShelfRequest ProtoRPC message.</td>
+         <td>shelf_request: ShelfRequest, A message containing the unique identifiers to be used when retrieving a shelf.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>friendly_name: str, The friendly name of the shelf.</td>
+      <tr>
+         <td></td>
+         <td>location: str, The location of the shelf.</td>
+      <tr>
+         <td></td>
+         <td>latitude: float, A geographical point represented by floating-point.</td>
+      <tr>
+         <td></td>
+         <td>longitude: float, A geographical point represented by floating-point. </td>
+      <tr>
+         <td></td>
+         <td>altitude: float, Indicates the floor.</td>
+         
+   </tbody>
+</table>
 
-| Requests                             | Attributes                            |
-| :----------------------------------- | :------------------------------------ |
-| UpdateShelfRequest ProtoRPC message. | shelf_request: ShelfRequest, A message|
-|                                      | containing the unique identifiers to  |
-|                                      | be used when retrieving a shelf.      |
-|                                      | friendly_name: str, The friendly name |
-|                                      | of the shelf.                         |
-|                                      | location: str, The location of the    |
-|                                      | shelf.                                |
-|                                      | latitude: float, A geographical point |
-|                                      | represented by floating-point.        |
-|                                      | longitude: float, A geographical      |
-|                                      | point represented by floating-point.  |
-|                                      | altitude: float, Indicates the floor. |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
 
 ### Survey_api
 
@@ -1403,126 +1435,220 @@ The entry point for the Survey methods.
 
 #### Methods
 
-##### create
+`create` Create a new survey and insert instance into datastore.
 
-Create a new survey and insert instance into datastore.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>Survey ProtoRPC Message to encapsulate the survey_model.Survey.</td>
+         <td>survey_type: survey_model.SurveyType, The type of survey this is.</td>
+      <tr>
+         <td></td>
+         <td>question: str, The text displayed as the question for this survey.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>enabled: bool, Whether or not this survey should be enabled.</td>
+      <tr>
+         <td></td>
+         <td>rand_weight: int, The weight to be applied to this survey when using the get method survey with random.</td>
+      <tr>
+         <td></td>
+         <td>answers: List of Answer, The list of answers possible for this survey.</td>
+      <tr>
+         <td></td>
+         <td>survey_urlsafe_key: str, The ndb.Key.urlsafe() for the survey.</td>
+   </tbody>
+</table>
 
-| Requests                             | Attributes                            |
-| :----------------------------------- | :------------------------------------ |
-| Survey ProtoRPC Message to           | survey_type: survey_model.SurveyType, |
-| encapsulate the survey_model.Survey. | The type of survey this is.           |
-|                                      | question: str, The text displayed as  |
-|                                      | the question for this survey.         |
-|                                      | enabled: bool, Whether or not this    |
-|                                      | survey should be enabled.             |
-|                                      | rand_weight: int, The weight to be    |
-|                                      | applied to this survey when using the |
-|                                      | get method survey with random.        |
-|                                      | answers: List of Answer, The list of  |
-|                                      | answers possible for this survey.     |
-|                                      | survey_urlsafe_key: str, The          |
-|                                      | ndb.Key.urlsafe() for the survey.     |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+`list` List surveys.
 
-##### list
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>ListSurveyRequest ProtoRPC Message.</td>
+         <td>survey_type: survey_model.SurveyType, The type of survey to list.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>enabled: bool, True for only enabled surveys, False to view disabled surveys.</td>
+     <tr>
+        <td></td>
+        <td>page_size: int, The size of the page to return.</td>
+     <tr>
+        <td></td>
+        <td>page_token: str, The urlsafe representation of the page token. </td>
+   </tbody>
+</table>
 
-List surveys.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>SurveyList ProtoRPC Message.</td>
+         <td>surveys: List of Survey, The list of surveys to return.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>page_token: str, The urlsafe representation of the page token.</td>
+      <tr>
+         <td></td>
+         <td>more: bool, Whether or not there are more results to be queried.</td>
+   </tbody>
+</table>
+<br>
 
-| Requests                            | Attributes                            |
-| :---------------------------------- | :------------------------------------ |
-| ListSurveyRequest ProtoRPC Message. | survey_type: survey_model.SurveyType, |
-|                                     | The type of survey to list.           |
-|                                     | enabled: bool, True for only          |
-|                                     | enabled surveys, False to view        |
-|                                     | disabled surveys.                     |
-|                                     | page_size: int, The size of the       |
-|                                     | page to return.                       |
-|                                     | page_token: str, The urlsafe          |
-|                                     | representation of the page token.     |
+`patch` Patch a given survey.
 
-| Returns                      | Attributes                                   |
-| :--------------------------- | :------------------------------------------- |
-| SurveyList ProtoRPC Message. | surveys: List of Survey, The list of surveys |
-|                              | to return.                                   |
-|                              | page_token: str, The urlsafe                 |
-|                              | representation of the page token.            |
-|                              | more: bool, Whether or not there are more    |
-|                              | results to be queried.                       |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>PatchSurveyRequest ProtoRPC Message.</td>
+         <td>survey_urlsafe_key: str, The ndb.Key.urlsafe() for the survey.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>answers: List of Answer, The list of answers possible for this survey.</td>
+      <tr>
+         <td></td>
+         <td>answer_keys_to_remove: List of str, The list of answer_urlsafe_key to remove from this survey.</td>
+      <tr>
+         <td></td>
+         <td>survey_type: survey_model.SurveyType, The type of survey this is. </td>
+      <tr>
+         <td></td>
+         <td>question: str, The text displayed as the question for this survey.</td>
+      <tr>
+         <td></td>
+         <td>enabled: bool, Whether or not this survey should be enabled.</td>
+      <tr>
+         <td></td>
+         <td>rand_weight: int, The weight to be applied to this survey when using the get method survey with random.</td>
+   
+   </tbody>
+</table>
 
-##### patch
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
-Patch a given survey.
+`request`Request a survey by type and present that survey to a Chrome App user.
 
-| Requests                             | Attributes                            |
-| :----------------------------------- | :------------------------------------ |
-| PatchSurveyRequest ProtoRPC Message. | survey_urlsafe_key: str, The          |
-|                                      | ndb.Key.urlsafe() for the survey.     |
-|                                      | answers: List of Answer, The list of  |
-|                                      | answers possible for this survey.     |
-|                                      | answer_keys_to_remove: List of str,   |
-|                                      | The list of answer_urlsafe_key to     |
-|                                      | remove from this survey.              |
-|                                      | survey_type: survey_model.SurveyType, |
-|                                      | The type of survey this is.           |
-|                                      | question: str, The text displayed as  |
-|                                      | the question for this survey.         |
-|                                      | enabled: bool, Whether or not this    |
-|                                      | survey should be enabled.             |
-|                                      | rand_weight: int, The weight to be    |
-|                                      | applied to this survey when using the |
-|                                      | get method survey with random.        |
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>ListSurveyRequest ProtoRPC Message.</td>
+         <td>survey_type: survey_model.SurveyType, The type of survey to list.</td>
+      </tr>
+   </tbody>
+</table>
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>Survey ProtoRPC Message to encapsulate the survey_model.Survey</td>
+         <td>survey_type: survey_model.SurveyType, The type of survey this is.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>question: str, The text displayed as the question for this survey.</td>
+      <tr>
+         <td></td>
+         <td>enabled: bool, Whether or not this survey should be enabled.</td>
+      <tr>
+         <td></td>
+         <td>rand_weight: int, The weight to be applied to this survey when using the get method survey with random.</td>
+      <tr>
+         <td></td>
+         <td>answers: List of Answer, The list of answers possible for this survey.</td>
+      <tr>
+         <td></td>
+         <td>survey_urlsafe_key: str, The ndb.Key.urlsafe() for the survey. </td>      
+   </tbody>
+</table>
+<br>
 
-##### request
+`submit` Submit a response to a survey acquired via a request.
 
-Request a survey by type and present that survey to a Chrome App user.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>SurveySubmission ProtoRPC Message.</td>
+         <td>survey_urlsafe_key: str, The urlsafe ndb.Key for a survey_model.Survey instance.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>answer_urlsafe_key: str, The urlsafe ndb.Key for a survey_model.Answer instance.</td>
+      <tr>
+         <td></td>
+         <td>more_info: str, the extra info optionally provided for the given Survey and Answer.</td>
+   </tbody>
+</table>
 
-| Requests                        | Attributes                                |
-| :------------------------------ | :---------------------------------------- |
-| SurveyRequest ProtoRPC Message. | survey_type: survey_model.SurveyType, The |
-|                                 | type of survey being requested.           |
-
-| Returns                              | Attributes                            |
-| :----------------------------------- | :------------------------------------ |
-| Survey ProtoRPC Message to           | survey_type: survey_model.SurveyType, |
-| encapsulate the survey_model.Survey. | The type of survey this is.           |
-|                                      | question: str, The text displayed as  |
-|                                      | the question for this survey.         |
-|                                      | enabled: bool, Whether or not this    |
-|                                      | survey should be enabled.             |
-|                                      | rand_weight: int, The weight to be    |
-|                                      | applied to this survey when using the |
-|                                      | get method survey with random.        |
-|                                      | answers: List of Answer, The list of  |
-|                                      | answers possible for this survey.     |
-|                                      | survey_urlsafe_key: str, The          |
-|                                      | ndb.Key.urlsafe() for the survey.     |
-
-##### submit
-
-Submit a response to a survey acquired via a request.
-
-| Requests                           | Attributes                              |
-| :--------------------------------- | :-------------------------------------- |
-| SurveySubmission ProtoRPC Message. | survey_urlsafe_key: str, The urlsafe    |
-|                                    | ndb.Key for a survey_model.Survey       |
-|                                    | instance.                               |
-|                                    | answer_urlsafe_key: str, The urlsafe    |
-|                                    | ndb.Key for a survey_model.Answer       |
-|                                    | instance.                               |
-|                                    | more_info: str, the extra info          |
-|                                    | optionally provided for the given       |
-|                                    | Survey and Answer.                      |
-
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
 ### Tag_api
 
@@ -1530,67 +1656,134 @@ API endpoint that handles requests related to tags.
 
 #### Methods
 
-##### create
+`create` Create a new tag.
 
-Create a new tag.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>tag_messages.CreateTagRequest</td>
+         <td>tag: tag_messages.Tag, the attributes of a Tag.</td>
+      </tr>
+   </tbody>
+</table>
 
-| Requests                      | Attributes
-| :---------------------------- | :---------
-| tag_messages.CreateTagRequest | tag: tag_messages.Tag, the attributes of a Tag.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
 
-##### destroy
+`destroy` Destroy a tag.
 
-Destroy a tag.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>tag_messages.TagRequest</td>
+         <td>urlsafe_key: str, the urlsafe representation of the ndb.Key for the tag being requested.</td>
+      </tr>
+   </tbody>
+</table>
 
-| Requests                       | Attributes
-| :----------------------------- | :---------
-| tag_messages.TagRequest        | urlsafe_key: str, the urlsafe representation
-|                                | of the ndb.Key for the tag being requested.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
 
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
+`get` Get a tag.
 
-##### get
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>tag_messages.TagRequest</td>
+         <td>urlsafe_key: str, the urlsafe representation of the ndb.Key for the tag being requested.</td>
+      </tr>
+   </tbody>
+</table>
 
-Get a tag.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>tag_messages.Tag</td>
+         <td>name: str, the unique name of the tag.</td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>hidden: bool, whether the tag is hidden in the frontend, defaults to False.</td>
+      <tr>
+         <td></td>
+         <td>color: str, the color of the tag, one of the material design palette.</td>
+      <tr>
+         <td></td>
+         <td>protect: bool, whether the tag is protected from user manipulation; this field will only be included in response messages.</td>
+      <tr>
+         <td></td>
+         <td>description: str, the description for the tag.</td>
+   </tbody>
+</table>
+<br>
 
-| Requests                       | Attributes
-| :----------------------------- | :---------
-| tag_messages.TagRequest        | urlsafe_key: str, the urlsafe representation
-|                                | of the ndb.Key for the tag being requested.
+`update` Updates a tag.
 
-Returns           | Attributes
-:---------------- | :---------
-tag_messages.Tag  | name: str, the unique name of the tag.
-                  | hidden: bool, whether the tag is hidden in the frontend,
-                  | defaults to False.
-                  | color: str, the color of the tag, one of the material
-                  | design palette.
-                  | protect: bool, whether the tag is protected from user
-                  | manipulation; this field will only be included in response
-                  | messages.
-                  | description: str, the description for the tag.
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Requests</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>tag_messages.UpdateTagRequest</td>
+         <td>tag: tag_messages.Tag, the attributes of a Tag.</td>
+      </tr>
+   </tbody>
+</table>
 
-##### update
+<table>
+   <tbody>
+      <tr>
+         <th align="center">Returns</th>
+         <th align="center">Attributes</th>
+      </tr>
+      <tr>
+         <td>message_types.VoidMessage</td>
+         <td>None</td>
+      </tr>
+   </tbody>
+</table>
+<br>
 
-Updates a tag.
-
-Requests                      | Attributes
-:---------------------------- | :----------------------------------------------
-tag_messages.UpdateTagRequest | tag: tag_messages.Tag, the attributes of a Tag.
-
-Returns                   | Attributes
-:------------------------ | :---------
-message_types.VoidMessage | None
-
-##### list
-
-Lists tags.
+`list` Lists tags.
 
 | Requests                       | Attributes
 | :----------------------------- | :---------
